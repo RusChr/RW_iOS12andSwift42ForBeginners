@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         currentValue = Int(slider.value.rounded())
-        
+
         startNewGame()
     }
     
@@ -58,6 +58,7 @@ class ViewController: UIViewController {
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        startNewRound()
     }
     
     
