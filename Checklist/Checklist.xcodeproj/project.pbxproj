@@ -15,6 +15,7 @@
 		5E5D490F26C9410D00FEEC07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E5D490D26C9410D00FEEC07 /* LaunchScreen.storyboard */; };
 		5E5F90DB26CAE74C0023E843 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F90DA26CAE74C0023E843 /* TodoList.swift */; };
 		5E9C687426C9926F00C5DF7C /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C687326C9926F00C5DF7C /* ChecklistItem.swift */; };
+		5EB0637E26CC327300ADF5CA /* AddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB0637D26CC327300ADF5CA /* AddItemTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		5E5D491826C95BD500FEEC07 /* Protocols.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Protocols.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5E5F90DA26CAE74C0023E843 /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		5E9C687326C9926F00C5DF7C /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		5EB0637D26CC327300ADF5CA /* AddItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				5E5D490226C9410C00FEEC07 /* AppDelegate.swift */,
 				5E5D490426C9410C00FEEC07 /* SceneDelegate.swift */,
 				5E5D490626C9410C00FEEC07 /* ChecklistViewController.swift */,
+				5EB0637D26CC327300ADF5CA /* AddItemTableViewController.swift */,
 				5E9C687326C9926F00C5DF7C /* ChecklistItem.swift */,
 				5E5F90DA26CAE74C0023E843 /* TodoList.swift */,
 				5E5D490826C9410C00FEEC07 /* Main.storyboard */,
@@ -147,6 +150,7 @@
 			files = (
 				5E5F90DB26CAE74C0023E843 /* TodoList.swift in Sources */,
 				5E5D490726C9410C00FEEC07 /* ChecklistViewController.swift in Sources */,
+				5EB0637E26CC327300ADF5CA /* AddItemTableViewController.swift in Sources */,
 				5E5D490326C9410C00FEEC07 /* AppDelegate.swift in Sources */,
 				5E5D490526C9410C00FEEC07 /* SceneDelegate.swift in Sources */,
 				5E9C687426C9926F00C5DF7C /* ChecklistItem.swift in Sources */,
