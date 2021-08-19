@@ -2,8 +2,7 @@
 //  ChecklistItem.swift
 //  Checklist
 //
-//  Created by Brian on 6/19/18.
-//  Copyright © 2018 Razeware. All rights reserved.
+//  Created by Rustam Chergizbiev on 15.08.2021.
 //
 
 import Foundation
@@ -16,7 +15,4 @@ class ChecklistItem: NSObject {
     func toggleChecked() {
         checked = !checked
     }
-    
 }
-
-
