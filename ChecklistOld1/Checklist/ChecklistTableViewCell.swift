@@ -2,8 +2,8 @@
 //  ChecklistTableViewCell.swift
 //  Checklist
 //
-//  Created by Brian on 6/20/18.
-//  Copyright © 2018 Razeware. All rights reserved.
+//  Created by Rustam Chergizbiev on 19.08.2021.
+//  Copyright © 2021 Razeware. All rights reserved.
 //
 
 import UIKit
@@ -18,11 +18,11 @@ class ChecklistTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
-    
+
 }

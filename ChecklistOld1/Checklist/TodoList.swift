@@ -19,6 +19,8 @@ class TodoList {
     private var lowPriorityTodos: [ChecklistItem] = []
     private var noPriorityTodos: [ChecklistItem] = []
     
+    var todos: [ChecklistItem] = []
+    
     init() {
         
         let row0Item = ChecklistItem()
@@ -56,32 +58,26 @@ class TodoList {
         
     }
     
-    func addTodo(_ item: ChecklistItem, for priority: Priority, at index: Int = -1) {
+    func newTodo() -> ChecklistItem {
+        let item = ChecklistItem()
+        item.text = randomTitle()
+        item.checked  = true
+        mediumPriorityTodos.append(item)
+        return item
+    }
+    
+    func move(item: ChecklistItem, from sourceList: Priority, at sourceIndex: Int, to destinationList: Priority, at destinationIndex)
+    
+    func remove(_ item: ChecklistItem, from priority: Priority, at index: Int) {
         switch priority {
         case .high:
-            if index < 0 {
-                highPriorityTodos.append(item)
-            } else {
-                highPriorityTodos.insert(item, at: index)
-            }
+            highPriorityTodos.remove(at: index)
         case .medium:
-            if index < 0 {
-                mediumPriorityTodos.append(item)
-            } else {
-                mediumPriorityTodos.insert(item, at: index)
-            }
+            mediumPriorityTodos.remove(at: index)
         case .low:
-            if index < 0 {
-                lowPriorityTodos.append(item)
-            } else {
-                lowPriorityTodos.insert(item, at: index)
-            }
+            lowPriorityTodos.remove(at: index)
         case .no:
-            if index < 0 {
-                noPriorityTodos.append(item)
-            } else {
-                noPriorityTodos.insert(item, at: index)
-            }
+            noPriorityTodos.remove(at: index)
         }
     }
     
@@ -98,32 +94,17 @@ class TodoList {
         }
     }
     
-    func newTodo() -> ChecklistItem {
-        let item = ChecklistItem()
-        item.text = randomTitle()
-        item.checked  = true
-        mediumPriorityTodos.append(item)
-        return item
-    }
-    
-    func move(item: ChecklistItem, from sourcePriority: Priority, at sourceIndex: Int, to destinationPriority: Priority, at destinationIndex: Int) {
-        remove(item, from: sourcePriority, at: sourceIndex)
-        addTodo(item, for: destinationPriority, at: destinationIndex)
-        
-    }
-    
-    func remove(_ item: ChecklistItem, from priority: Priority, at index: Int) {
+    func addTodo(_ item: ChecklistItem, for priority: Priority) {
         switch priority {
         case .high:
-            highPriorityTodos.remove(at: index)
+            return highPriorityTodos.append(item)
         case .medium:
-            mediumPriorityTodos.remove(at: index)
+            return mediumPriorityTodos.append(item)
         case .low:
-            lowPriorityTodos.remove(at: index)
+            return lowPriorityTodos.append(item)
         case .no:
-            noPriorityTodos.remove(at: index)
+            return noPriorityTodos.append(item)
         }
-        
     }
     
     private func randomTitle() -> String {

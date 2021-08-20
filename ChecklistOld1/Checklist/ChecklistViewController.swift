@@ -32,10 +32,8 @@ class ChecklistViewController: UITableViewController {
             for indexPath in selectedRows {
                 if let priority = priorityForSectionIndex(indexPath.section) {
                     let todos = todoList.todoList(for: priority)
-                    
                     let rowToDelete = indexPath.row > todos.count - 1 ? todos.count - 1 : indexPath.row
                     let item = todos[rowToDelete]
-                    
                     todoList.remove(item, from: priority, at: rowToDelete)
                 }
             }
@@ -60,8 +58,8 @@ class ChecklistViewController: UITableViewController {
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: true)
-        tableView.setEditing(tableView.isEditing, animated: true)
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(tableView.isEditing, animated: animated)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,7 +93,6 @@ class ChecklistViewController: UITableViewController {
                 configureCheckmark(for: cell, with: item)
                 tableView.deselectRow(at: indexPath, animated: true)
             }
-            
         }
     }
     
@@ -106,20 +103,14 @@ class ChecklistViewController: UITableViewController {
             let indexPaths = [indexPath]
             tableView.deleteRows(at: indexPaths, with: .automatic)
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
-        if let srcPriority = priorityForSectionIndex(sourceIndexPath.section),
-           let destPriority = priorityForSectionIndex(destinationIndexPath.section) {
-            
-            let item = todoList.todoList(for: srcPriority)[sourceIndexPath.row]
-            todoList.move(item: item, from: srcPriority, at:sourceIndexPath.row, to: destPriority, at: destinationIndexPath.row)
-        }
-        
+        //todoList.move(item: todoList.todos[sourceIndexPath.row], to: destinationIndexPath.row)
         tableView.reloadData()
     }
+    
+    
     
     func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
         if let checkmarkCell = cell as? ChecklistTableViewCell {
@@ -148,9 +139,7 @@ class ChecklistViewController: UITableViewController {
             if let itemDetailViewController = segue.destination as? ItemDetailViewController {
                 if let cell = sender as? UITableViewCell,
                    let indexPath = tableView.indexPath(for: cell),
-                   let priority = priorityForSectionIndex(indexPath.section)
-                {
-                    
+                   let priority = priorityForSectionIndex(indexPath.section) {
                     let item = todoList.todoList(for: priority)[indexPath.row]
                     itemDetailViewController.itemToEdit = item
                     itemDetailViewController.delegate = self
@@ -167,21 +156,16 @@ class ChecklistViewController: UITableViewController {
         var title: String? = nil
         if let priority = priorityForSectionIndex(section) {
             switch priority {
-            case .high:
-                title = "High Priority Todos"
-            case .medium:
-                title = "Medium Priority Todos"
-            case .low:
-                title = "Low Priority Todos"
-            case .no:
-                title = "Someday Todo Items"
+            case .high: title = "High Priority Todos"
+            case .medium: title = "Medium Priority Todos"
+            case .low: title = "Low Priority Todos"
+            case .no: title = "No Priority Todos"
             }
         }
         return title
     }
-    
-    
 }
+
 
 extension ChecklistViewController: ItemDetailViewControllerDelegate {
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
@@ -197,10 +181,9 @@ extension ChecklistViewController: ItemDetailViewControllerDelegate {
     }
     
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
-        
         for priority in TodoList.Priority.allCases {
             let currentList = todoList.todoList(for: priority)
-            if let index = currentList.index(of: item) {
+            if let index = currentList.firstIndex(of: item) {
                 let indexPath = IndexPath(row: index, section: priority.rawValue)
                 if let cell = tableView.cellForRow(at: indexPath) {
                     configureText(for: cell, with: item)

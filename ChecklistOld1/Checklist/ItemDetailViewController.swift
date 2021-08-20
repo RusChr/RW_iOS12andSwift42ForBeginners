@@ -42,8 +42,6 @@ class ItemDetailViewController: UITableViewController {
                 delegate?.itemDetailViewController(self, didFinishAdding: item)
             }
         }
-        
-        
     }
     
     override func viewDidLoad() {
@@ -59,6 +57,7 @@ class ItemDetailViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         textfield.becomeFirstResponder()
     }
+    
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
